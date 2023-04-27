@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, Button, SafeAreaView, ScrollView, ImageBackground, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { freeGames, paidGames, sliderData } from '../model/data';
 import windowWidth from '../utils/Dimensions';
@@ -7,6 +7,7 @@ import CustomSwitch from '../components/CustomSwitch';
 import ListItem from '../components/ListItem';
 import OrderDetailsScreen from '../screens/OrderDetailsScreen';
 import AuthContext from '../context/AuthContext';
+import { LineChart } from 'react-native-chart-kit';
 
 const HomeScreen = ({ navigation }) => {
     const [EnqTab, setEnqTab] = useState(1);
@@ -32,13 +33,14 @@ const HomeScreen = ({ navigation }) => {
                     <TextInput placeholder='Search' />
                 </View>
                 
-                <View style={{flexDirection:'row', justifyContent:'space-between', marginVertical:15}}>
+                {/* <View style={{flexDirection:'row', justifyContent:'space-between', marginVertical:15}}>
                     <Text style={{ fontSize: 16, fontFamily: 'Roboto-Medium' }}>Hot Enquiries</Text>
                     <TouchableOpacity onPress={()=>{}}>
                         <Text style={{color:'#0aada8',fontWeight:'bold',textDecorationLine:"underline"}}>View All</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
+                {/* tab view */}
                 <View style={{marginVertical:20}}>
                     <CustomSwitch 
                     selectionMode={1} 

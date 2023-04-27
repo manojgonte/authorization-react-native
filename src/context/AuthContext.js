@@ -2,15 +2,23 @@ import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { BASE_URL } from "../config";
+import { ToastAndroid } from "react-native";
 
 export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
 
     const login = (email,password) => {
-        // console.warn('logg');
+
+        if (!email) {
+            ToastAndroid.show('Please enter email address', ToastAndroid.SHORT);
+        } else if (!password) {
+            ToastAndroid.show('Please enter password', ToastAndroid.SHORT);
+        }
+
         setIsLoading(true);
 
         axios.post(`${BASE_URL}/login`, {
@@ -19,10 +27,10 @@ export const AuthProvider = ({ children }) => {
         })
         .then(function (res) {
             let userInfo = res.data;
-            setUserInfo(userInfo);
+            setUserInfo(userInfo); 
             setUserToken(userInfo.access_token);
+            AsyncStorage.setItem('userToken', userInfo.access_token);
             AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
-            AsyncStorage.setItem('userToken', userToken);
         })
         .catch(function (error) {
             console.log(error);
@@ -41,8 +49,8 @@ export const AuthProvider = ({ children }) => {
     const isLoggedIn = async () => {
         try {
             setIsLoading(true);
-            let userInfo = AsyncStorage.getItem('userInfo');
-            let userToken = AsyncStorage.getItem('userToken');
+            let userInfo = await AsyncStorage.getItem('userInfo');
+            let userToken = await AsyncStorage.getItem('userToken');
             userInfo = JSON.parse(userInfo);
             if(userInfo){
                 setUserToken(userToken);
@@ -50,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             }
             setIsLoading(false);
         } catch (error) {
-            console.log(`isLogged in error ${error}`);
+            console.log(`isLogged in error: ${error}`);
         }
     }
 

@@ -6,13 +6,13 @@ import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 import AuthContext from '../context/AuthContext';
 
-const AppNav = () => {
-    
-    const {isLoading, userToken} = useContext(AuthContext);
+function AppNav () {
 
-    if(isLoading) {
+    const { isLoading, userToken } = useContext(AuthContext);
+
+    if (isLoading) {
         return (
-            <View style={{flex:1, justifyContent: 'center',alignItems:'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <ActivityIndicator size="large" />
             </View>
         );

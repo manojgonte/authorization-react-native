@@ -27,7 +27,7 @@ export default InputField = ({
                 keyboardType={keyboardType}
                 value={value}
                 onChangeText={onChangeText}
-                style={{ flex: 1, paddingVertical: 0 }} 
+                style={{ flex: 1, paddingVertical: 0, color:'#000' }} 
             />
             <TouchableOpacity onPress={fieldButtonFunction}>
                 <Text style={{ color: '#10519d', fontWeight: '700' }}>{fieldButtonLabel}</Text>

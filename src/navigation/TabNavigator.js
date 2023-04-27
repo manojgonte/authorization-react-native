@@ -26,7 +26,7 @@ const HomeStack = ({ navigation }) => {
 
 const TabNavigator = ({ navigation }) => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { backgroundColor: '#AD40AF' }, tabBarInactiveTintColor: '#fff', tabBarActiveTintColor: '#fff' }}>
+        <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: true, tabBarStyle: { backgroundColor: '#10519d' }, tabBarInactiveTintColor: '#fff', tabBarActiveTintColor: '#58a8ff' }}>
             <Tab.Screen name="Home2" component={HomeStack} options={({ route }) => ({
                 tabBarStyle: { display: getTabBarVisibility(route), backgroundColor: '#10519d', },
                 tabBarIcon: ({ color, size }) => (

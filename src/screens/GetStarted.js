@@ -7,10 +7,10 @@ import Logo from '../../assets/images/yso.png';
 const GetStarted = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{marginTop:20}}>
+            <View style={{ marginTop: 20 }}>
                 <Text style={styles.text}>YSO</Text>
             </View>
-            <View style={{flex:1, justifyContent:'center','alignItems':'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center', 'alignItems': 'center' }}>
                 <GSImg width={300} height={300} />
                 {/* <Image source={Logo} width={300} height={300} resizeMode="contain"></Image> */}
             </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom:20
+        marginBottom: 20
     },
     btnText: {
         fontWeight: 'bold',
