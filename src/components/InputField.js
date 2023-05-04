@@ -23,11 +23,12 @@ export default InputField = ({
             {icon}
             <TextInput 
                 placeholder={label} 
+                placeholderTextColor="#000"
                 secureTextEntry={secureTextEntry}
                 keyboardType={keyboardType}
                 value={value}
                 onChangeText={onChangeText}
-                style={{ flex: 1, paddingVertical: 0, color:'#000' }} 
+                style={{ flex: 1, paddingVertical: 0 }} 
             />
             <TouchableOpacity onPress={fieldButtonFunction}>
                 <Text style={{ color: '#10519d', fontWeight: '700' }}>{fieldButtonLabel}</Text>

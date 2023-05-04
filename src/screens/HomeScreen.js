@@ -1,70 +1,84 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, SafeAreaView, ScrollView, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { freeGames, paidGames, sliderData } from '../model/data';
-import windowWidth from '../utils/Dimensions';
-import CustomSwitch from '../components/CustomSwitch';
-import ListItem from '../components/ListItem';
-import OrderDetailsScreen from '../screens/OrderDetailsScreen';
 import AuthContext from '../context/AuthContext';
 import { LineChart } from 'react-native-chart-kit';
+import { CardThree } from 'react-native-card-ui';
 
 const HomeScreen = ({ navigation }) => {
-    const [EnqTab, setEnqTab] = useState(1);
     const {userInfo} = useContext(AuthContext);
-    const onSelectSwitch = (value) =>{
-        setEnqTab(value);
-    }
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={{ padding: 20 }}>
 
                 {/* user bar */}
                 <View style={styles.userHeader}>
-                    <Text style={{ fontSize: 16, fontFamily: 'Roboto-Medium',color:'#000' }}>Hello, {userInfo.user.name}</Text>
+                    <Text style={{ fontSize: 16, fontFamily: 'Nexa-Bold',color:'#000' }}>Hello, {userInfo.user.name}</Text>
                     <TouchableOpacity onPress={()=> navigation.openDrawer()}>
                         <ImageBackground source={require('../../assets/images/user-profile.jpg')} style={styles.avatar} imageStyle={{ borderRadius: 25 }} />
                     </TouchableOpacity>
                 </View>
 
+                <View className="flex-1 items-center justify-center bg-white mt-8 px-2">
+                    <Text className="text-black text-5xl" style={{fontFamily:'Nexa-Bold'}}>YSO</Text>
+                </View>
+
                 {/* search bar */}
-                <View style={styles.searchBar}>
+                {/* <View style={styles.searchBar}>
                     <Ionicons color='#c6c6c6' name='search' size={20} style={{ marginRight: 5 }} />
                     <TextInput placeholder='Search' />
-                </View>
+                </View> */}
                 
                 {/* <View style={{flexDirection:'row', justifyContent:'space-between', marginVertical:15}}>
-                    <Text style={{ fontSize: 16, fontFamily: 'Roboto-Medium' }}>Hot Enquiries</Text>
+                    <Text style={{ fontSize: 16, fontFamily: 'Nexa-Regular' }}>Hot Enquiries</Text>
                     <TouchableOpacity onPress={()=>{}}>
                         <Text style={{color:'#0aada8',fontWeight:'bold',textDecorationLine:"underline"}}>View All</Text>
                     </TouchableOpacity>
                 </View> */}
 
-                {/* tab view */}
-                <View style={{marginVertical:20}}>
-                    <CustomSwitch 
-                    selectionMode={1} 
-                    option1="HOT" 
-                    option2="WARM"
-                    onSelectSwitch={onSelectSwitch}
+                <View style={{flexDirection:'column', marginHorizontal:50}}>
+                    <CardThree
+                        title={"250/500 L"}
+                        subTitle={"April, 2023"}
+                        profile={{
+                        uri:
+                            "http://www.annonce-musicien.fr/assets/user_xl-e4e8b0bbfd2332dce41ff66644dd16f2.png"
+                        }}
+                        icon={"forward"}
+                        iconColor={"grey"}
+                    />
+                    <CardThree
+                        title={"350/500 L"}
+                        subTitle={"Sales Target"}
+                        profile={{
+                        uri:
+                            "http://www.annonce-musicien.fr/assets/user_xl-e4e8b0bbfd2332dce41ff66644dd16f2.png"
+                        }}
+                        icon={"forward"}
+                        iconColor={"grey"}
+                    />
+                    <CardThree
+                        title={"350/500 L"}
+                        subTitle={"Booking Target"}
+                        profile={{
+                        uri:
+                            "http://www.annonce-musicien.fr/assets/user_xl-e4e8b0bbfd2332dce41ff66644dd16f2.png"
+                        }}
+                        icon={"forward"}
+                        iconColor={"grey"}
+                    />
+                    <CardThree
+                        title={"42"}
+                        subTitle={"HOT Enquiries"}
+                        profile={{
+                        uri:
+                            "http://www.annonce-musicien.fr/assets/user_xl-e4e8b0bbfd2332dce41ff66644dd16f2.png"
+                        }}
+                        icon={"forward"}
+                        iconColor={"grey"}
                     />
                 </View>
 
-                { EnqTab == 1 &&
-                    freeGames.map((item) =>
-                        <ListItem data={item} key={item.id} onPress={()=>navigation.navigate('OrderDetails',{title:item.title, id:item.id})} /> 
-                    )
-                }
-                { EnqTab == 2 && 
-                    paidGames.map((item) =>
-                        <ListItem data={item} key={item.id} onPress={()=>navigation.navigate('OrderDetails',{title:item.title, id:item.id})} /> 
-                    )
-                }
-
-                {/* <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                    <Text>Home</Text>
-                    <Button title='Go to Dashboard' onPress={()=>navigation.navigate('Dashboard')} />
-                </View> */}
             </ScrollView>
         </SafeAreaView>
     );
