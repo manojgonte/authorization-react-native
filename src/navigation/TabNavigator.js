@@ -19,6 +19,7 @@ const HomeStack = ({ navigation }) => {
             <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name='EnqDetails' component={EnqDetailsScreen} options={({ route }) => ({
                 title: route.params?.title,
+                headerShown: false,
             })} />
         </Stack.Navigator>
     )
@@ -37,7 +38,7 @@ const TabNavigator = ({ navigation }) => {
             <Tab.Screen name="Home2" component={HomeStack} options={({ route }) => ({
                 tabBarStyle: { display: getTabBarVisibility(route), backgroundColor: '#fff' },
                 tabBarIcon: ({ color, size }) => (
-                    <Ionicons name='home-outline' color={color} size={size} />
+                    <Ionicons name='home' color={color} size={size} />
                 )
             })} />
             <Tab.Screen name="Enquiries" component={EnquiryScreen} options={{
@@ -52,7 +53,7 @@ const TabNavigator = ({ navigation }) => {
                 title:'Payment Tracker',
                 headerShown: true,
                 tabBarIcon: ({ color, size }) => (
-                    <Ionicons name='cash-outline' color={color} size={size} />
+                    <Ionicons name='cash' color={color} size={size} />
                 )
             }} />
         </Tab.Navigator>

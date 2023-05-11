@@ -4,7 +4,7 @@ import { View, Text, Button } from 'react-native';
 const PaymentTrackerScreen = ({navigation}) => {
     return (
         <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-            <Text>PaymentTrackerScreen</Text>
+            <Text className="text-black">Payment Tracker Screen</Text>
         </View>
     );
 };

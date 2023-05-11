@@ -94,7 +94,7 @@ const EnquiriesScreen = ({ navigation }) => {
 
                 {EnqTab == 1 &&
                     <View>
-                        <View style={styles.searchBar}>
+                        {/* <View style={styles.searchBar}>
                             <Ionicons color='#c6c6c6' name='search' size={20} style={{ marginRight: 5 }} />
                             <TextInput
                                 placeholder='Search'
@@ -106,7 +106,7 @@ const EnquiriesScreen = ({ navigation }) => {
                                 onChangeText={(query) => handleSearch(query)}
                                 style={{ flex: 1, paddingVertical: 5 }} 
                             />
-                        </View>
+                        </View> */}
 
                         <FlatList
                             data={hotEnq}
